@@ -1,0 +1,2 @@
+train01701.jpg 1 electronicequipment 19 73 393 318 35 56 405 101 379 313 9 268
+train01701.jpg 1 electronicequipment 253 49 388 226 261 58 372 52 381 222 270 228

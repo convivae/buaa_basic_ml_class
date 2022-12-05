@@ -1,0 +1,1 @@
+train00781.jpg 1 electronicequipment 520 212 638 389 527 207 637 216 621 398 511 389
