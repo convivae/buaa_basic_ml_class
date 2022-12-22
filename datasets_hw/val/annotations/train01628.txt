@@ -1,1 +1,0 @@
-train01628.jpg 1 electronicequipment 45 100 140 252 58 108 115 103 129 261 72 266

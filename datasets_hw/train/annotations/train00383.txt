@@ -1,1 +1,0 @@
-train00383.jpg 1 electronicequipment 190 379 421 473 190 445 420 379 428 407 197 473

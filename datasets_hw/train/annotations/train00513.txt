@@ -1,1 +1,0 @@
-train00513.jpg 1 electronicequipment 0 27 288 360 -122 217 0 13 290 188 168 391

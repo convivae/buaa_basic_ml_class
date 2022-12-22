@@ -1,0 +1,2 @@
+train00456.jpg 1 electronicequipment 1 13 130 227 47 8 146 46 71 239 -27 201
+train00456.jpg 1 knife 22 21 85 287 27 17 84 18 79 284 22 283
