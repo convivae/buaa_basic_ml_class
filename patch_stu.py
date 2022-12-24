@@ -2,6 +2,7 @@
 X-ray patcher module.
 Need kornia
 """
+import shutil
 
 import numpy as np
 import torch
@@ -357,7 +358,6 @@ def ball2depth(vertices, faces, h, w):
     """
     vertices = torch.clamp(vertices, 0, 1)
     vs = vertices.clone()
-    # TODO 这里的维数不对
     vs[:, 0] = vertices[:, 0] * w
     vs[:, 1] = vertices[:, 1] * h
     vertices = vs
@@ -394,7 +394,8 @@ def cal_patch_poly(patch):
     ret, binary = cv2.threshold(gray, 1, 255, cv2.THRESH_BINARY)  # 图像二值化
     binary = np.expand_dims(binary, axis=2)
     contours, hierarchy = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)  # 查找物体轮廓
-    assert len(contours) == 1
+    # TODO 该不该注释掉
+    # assert len(contours) == 1
     rect = cv2.minAreaRect(contours[0])
     points = cv2.boxPoints(rect)
     points = np.int0(points)
@@ -477,18 +478,26 @@ if __name__ == '__main__':
                                                    True)  # load obj vertices and faces with rotation
     obj_lenth = len(obj_dict.keys())
 
-    # 对1500张图片进行循环（train00001~train01500）
-    # TODO 此处需要循环遍历
-    # img_ids = get_all_image_ids()
+    # 对1500张图片进行循环（train00001~train01500），这里先获取图片的名称
+    # img_ids = get_all_image_ids() TODO 正式运行时把这行放开
     img_ids = ['train00001']
+
+    first_run = True  # train下面新的文件夹第一次运行时要删除
+
     for img_id in img_ids:
-        # 每一张图片随机粘贴两到三个 patch
-        # 具体的做法是，在 obj_lenth 中随机挑选2～3个出来组成list，i 在这个 list 中进行循环
-        for i in range(obj_lenth):
+        print('------------processing: {}------------'.format(img_id))
+
+        # 每一张图片随机粘贴两到三个 patch，这里为了方便，统一成 3 个
+        # 具体的做法是，在 obj_lenth 中随机挑选 3 个出来组成 list，i 在这个 list 中进行循环
+        sample_objs = random.sample(range(obj_lenth), 3)
+        sample_objs.sort()
+        print('------------本次随机到的是: {}------------'.format(sample_objs))
+
+        for i in sample_objs:
             # 循环
             name = list(obj_dict.keys())[i]
             obj_infos = list(obj_dict.values())[i]
-            print('------------processing: {}.obj------------'.format(name))
+            print('------------adding patch from: {}.obj------------'.format(name))
 
             print('------------Part (2): Generate pacthed image.------------')
 
@@ -520,15 +529,20 @@ if __name__ == '__main__':
             print('------------------Step (3): Stick patch.------------------')
             img_root = './datasets/train/images/'
             patched_img_root = './datasets/train/images_patched/'
+
+            if first_run and os.path.exists(patched_img_root):
+                shutil.rmtree(path=patched_img_root)
             if not os.path.exists(patched_img_root):
                 os.mkdir(patched_img_root)
 
-            # TODO 此处需要循环遍历
-            img_id = 'train00001'
-
+            ## 这里需要使用新的图片位置
             ## load img
-            print(img_id)
-            img_path = os.path.join(img_root, img_id + '.jpg')
+            new_img_path = os.path.join(patched_img_root, img_id + '.jpg')
+            if os.path.exists(new_img_path):
+                img_path = new_img_path  # 循环粘贴
+            else:
+                img_path = os.path.join(img_root, img_id + '.jpg')
+
             img = cv2.imread(img_path)
             img_tensor = torch.from_numpy(img.astype(np.float32)).permute(2, 0, 1)
             if CUDA_AVAILABLE:
@@ -540,20 +554,26 @@ if __name__ == '__main__':
             img_tensor[:, point[0]:point[0] + patch_size[0], point[1]:point[1] + patch_size[1]].mul_(patch.squeeze(0))
             # save sticked img
             # save_img_name = img_id.split('.')[0] + '_' + name + '.jpg'
-            new_img_path = os.path.join(patched_img_root, img_id + '.jpg')
+            # new_img_path = os.path.join(patched_img_root, img_id + '.jpg')
             save_img(new_img_path, img_tensor, img_tensor.shape[1:])
 
             print('------------------part (3): Save new annotation.------------------')
             ann_root = './datasets/train/annotations'
             patched_ann_root = './datasets/train/annotations_patched/'
+            if first_run and os.path.exists(patched_ann_root):
+                shutil.rmtree(path=patched_ann_root)
             if not os.path.exists(patched_ann_root):
                 os.mkdir(patched_ann_root)
 
+            # 这里也需要循环粘贴
             ann_path = os.path.join(ann_root, img_id + '.txt')
-            anns = open(ann_path, 'r').readlines()
             new_ann_path = os.path.join(patched_ann_root, img_id + '.txt')
-            new_anns_file = open(new_ann_path, 'w')
+            if os.path.exists(new_ann_path):
+                anns = open(new_ann_path, 'r').readlines()  # 循环粘贴
+            else:
+                anns = open(ann_path, 'r').readlines()
 
+            new_anns_file = open(new_ann_path, 'w')
             # calculate coordinates of four vertices of rotate bounding box
             patch[~mask] = 0
             points = cal_patch_poly(patch.squeeze(0) * 255)
@@ -589,6 +609,9 @@ if __name__ == '__main__':
             ## Step (6): save eval annotation
             print('------------------Part (4): Save eval annotation.------------------')
             eval_ann_root = './datasets/train/annotations_eval/'
+            if first_run and os.path.exists(eval_ann_root):
+                shutil.rmtree(path=eval_ann_root)
+            first_run = False
             if not os.path.exists(eval_ann_root):
                 os.mkdir(eval_ann_root)
 
