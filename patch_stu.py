@@ -79,7 +79,6 @@ def load_from_file(obj, root, random_rotate=False):
         for j in range(tmp_len):
             name = list(obj.keys())[j]
             path = root + name + '.obj'
-            print(path)
             with open(path, "r") as fp:
                 xlist = fp.readlines()
 
@@ -523,10 +522,6 @@ if __name__ == '__main__':
     if not os.path.exists(depth_save_path):
         os.mkdir(depth_save_path)
 
-    vertices, faces, rotate_param = load_from_file(obj_dict, obj_root,
-                                                   True)  # load obj vertices and faces with rotation
-    obj_lenth = len(obj_dict.keys())
-
     # 对1500张图片进行循环（train00001~train01500），这里先获取图片的名称
     # TODO 正式运行时把这行放开
     img_ids = get_all_image_ids()
@@ -536,6 +531,10 @@ if __name__ == '__main__':
 
     for img_id in img_ids:
         print('------------processing: {}------------'.format(img_id))
+
+        # 随机的角度位于 load_from_file 函数中，每张图片都要随机一次
+        vertices, faces, rotate_param = load_from_file(obj_dict, obj_root, True)  # load obj vertices and faces with rotation
+        obj_lenth = len(obj_dict.keys())
 
         # 每一张图片随机粘贴两到三个 patch，这里为了方便，统一成 3 个
         # 具体的做法是，在 obj_lenth 中随机挑选 3 个出来组成 list，i 在这个 list 中进行循环
