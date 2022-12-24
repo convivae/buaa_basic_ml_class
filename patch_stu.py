@@ -64,7 +64,7 @@ def load_infos(xlist):
     return vertices, faces
 
 
-# TODO 需要改成多个
+# 这里改成了多个
 def load_from_file(obj, root, random_rotate=False):
     """
     Load vertices and faces from an .obj file.
@@ -79,6 +79,7 @@ def load_from_file(obj, root, random_rotate=False):
         for j in range(tmp_len):
             name = list(obj.keys())[j]
             path = root + name + '.obj'
+            print(path)
             with open(path, "r") as fp:
                 xlist = fp.readlines()
 
@@ -447,25 +448,73 @@ if __name__ == '__main__':
             'category': 'umbrella',
             'multi-part': False,
             'material': 'plastic',
-            'patch_size': (150, 150)
+            'patch_size': (120, 120)
         },
         'umbrella_002': {
             'category': 'umbrella',
             'multi-part': False,
             'material': 'plastic',
-            'patch_size': (150, 150)
+            'patch_size': (120, 120)
         },
         'pressure_001': {
             'category': 'pressure',
             'multi-part': False,
             'material': 'iron',
-            'patch_size': (150, 150)
+            'patch_size': (80, 80)
         },
         'pressure_002': {
             'category': 'pressure',
             'multi-part': False,
             'material': 'iron',
+            'patch_size': (100, 100)
+        },
+        'glassbottle': {
+            'category': 'glassbottle',
+            'multi-part': False,
+            'material': 'glass',
+            'patch_size': (80, 80)
+        },
+        'plasticbottle': {
+            'category': 'plasticbottle',
+            'multi-part': False,
+            'material': 'plastic',
             'patch_size': (150, 150)
+        },
+        'termobottle': {
+            'category': 'metalbottle',
+            'multi-part': False,
+            'material': 'iron',
+            'patch_size': (150, 150)
+        },
+        'battery': {
+            'category': 'battery',
+            'multi-part': False,
+            'material': 'iron',
+            'patch_size': (50, 50)
+        },
+        'xiaomi_powerbank': {
+            'category': 'battery',
+            'multi-part': False,
+            'material': 'iron',
+            'patch_size': (80, 80)
+        },
+        'iphone': {
+            'category': 'electronicequipment',
+            'multi-part': False,
+            'material': 'iron',
+            'patch_size': (100, 100)
+        },
+        'ipad': {
+            'category': 'electronicequipment',
+            'multi-part': False,
+            'material': 'iron',
+            'patch_size': (180, 180)
+        },
+        'lighter': {
+            'category': 'lighter',
+            'multi-part': False,
+            'material': 'plastic',
+            'patch_size': (50, 50)
         },
     }
 
@@ -479,8 +528,9 @@ if __name__ == '__main__':
     obj_lenth = len(obj_dict.keys())
 
     # 对1500张图片进行循环（train00001~train01500），这里先获取图片的名称
-    # img_ids = get_all_image_ids() TODO 正式运行时把这行放开
-    img_ids = ['train00001']
+    # TODO 正式运行时把这行放开
+    img_ids = get_all_image_ids()
+    # img_ids = ['train00001']
 
     first_run = True  # train下面新的文件夹第一次运行时要删除
 
@@ -616,12 +666,15 @@ if __name__ == '__main__':
                 os.mkdir(eval_ann_root)
 
             eval_ann_path = os.path.join(eval_ann_root, img_id + '.txt')
-            eval_anns_file = open(eval_ann_path, 'w')
+            if os.path.exists(eval_ann_path):
+                eval_anns_file = open(eval_ann_path, 'a')  # 循环粘贴
+            else:
+                eval_anns_file = open(eval_ann_path, 'w')
 
             eval_ann = []
             eval_ann.append(category)
             eval_ann.append(name)
-            # TODO 这里需要把旋转角度拿出来
+
             eval_ann.extend([str(i) for i in rotate_param[i]])
             eval_ann.extend([str(i) for i in point])
             eval_ann.extend([str(i) for i in patch_size])
