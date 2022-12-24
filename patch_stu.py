@@ -10,8 +10,6 @@ import os
 import cv2
 import random
 
-use_cuda = torch.cuda.is_available()
-
 PARAM_IRON = [
     [0, 0, 104.3061111111111],
     [-199.26894460884833, -1.3169138497713286, 227.17803542009827],
@@ -38,6 +36,8 @@ PARAM_GLASS = [
 
 MIN_EPS = 1e-6
 
+CUDA_AVAILABLE = torch.cuda.is_available()
+
 
 def load_infos(xlist):
     vertices = []
@@ -54,7 +54,7 @@ def load_infos(xlist):
             else:
                 faces.append([int(elm_list[1]) - 1, int(elm_list[2]) - 1, int(elm_list[3]) - 1])
 
-    if use_cuda:
+    if CUDA_AVAILABLE:
         vertices = torch.Tensor(vertices).type(torch.cuda.FloatTensor)
     else:
         vertices = torch.Tensor(vertices).type(torch.FloatTensor)
@@ -63,40 +63,51 @@ def load_infos(xlist):
     return vertices, faces
 
 
-def load_from_file(obj, root, M=None):
+# TODO 需要改成多个
+def load_from_file(obj, root, random_rotate=False):
     """
     Load vertices and faces from an .obj file.
     coordinates will be normalized to N(0.5, 0.5)
     """
     ## single part
     if type(obj) == dict:
-        name = list(obj.keys())[0]
-        path = os.path.join(root, obj[name]['category'], name + '.obj')
-        with open(path, "r") as fp:
-            xlist = fp.readlines()
+        tmp_len = len(obj.keys())
+        v = []
+        f = []
+        rotate = []
+        for j in range(tmp_len):
+            name = list(obj.keys())[j]
+            path = root + name + '.obj'
+            with open(path, "r") as fp:
+                xlist = fp.readlines()
 
-        vertices, faces = load_infos(xlist)
-        # rotate
-        if M is not None:
-            vertices = torch.mm(vertices, M)
+            vertices, faces = load_infos(xlist)
+            # rotate
+            if random_rotate:
+                rotate_param = [random.randint(0, 360), random.randint(0, 360),
+                                random.randint(0, 360)]  # rotate config (x, y, z)
+                rotate.append(rotate_param)
+                vertices = torch.mm(vertices, get_rotate_matrix(rotate_param))
 
-        # clamp
-        min_xyz, _ = torch.min(vertices, 0)
-        min_xyzall = min_xyz.repeat((vertices.shape[0], 1))
-        max_xyz, _ = torch.max(vertices, 0)
-        max_xyzall = max_xyz.repeat((vertices.shape[0], 1))
-        max_len = max_xyz - min_xyz
-        max_len[-1] = 0
-        max_len2, _ = torch.max(max_len, 0)
-        # vertices = (vertices - min_xyzall) / max_len2
-        len = max_xyzall - min_xyzall
-        len[:, 0] = max_len2
-        len[:, 1] = max_len2
-        # vertices = (vertices - min_xyzall) / (max_xyzall - min_xyzall)
-        vertices = (vertices - min_xyzall) / len
+            # clamp
+            min_xyz, _ = torch.min(vertices, 0)
+            min_xyzall = min_xyz.repeat((vertices.shape[0], 1))
+            max_xyz, _ = torch.max(vertices, 0)
+            max_xyzall = max_xyz.repeat((vertices.shape[0], 1))
+            max_len = max_xyz - min_xyz
+            max_len[-1] = 0
+            max_len2, _ = torch.max(max_len, 0)
+            # vertices = (vertices - min_xyzall) / max_len2
+            len_xyzall = max_xyzall - min_xyzall
+            len_xyzall[:, 0] = max_len2
+            len_xyzall[:, 1] = max_len2
+            # vertices = (vertices - min_xyzall) / (max_xyzall - min_xyzall)
+            vertices = (vertices - min_xyzall) / len_xyzall
 
-        faces = np.array(faces, dtype=np.int32)
-        return [vertices], [faces]
+            faces = np.array(faces, dtype=np.int32)
+            v.append(vertices)
+            f.append(faces)
+        return v, f, rotate
     ## multi parts
     else:
         whole_name = obj[0]
@@ -107,6 +118,7 @@ def load_from_file(obj, root, M=None):
 
         vertices = []
         faces = []
+        rotate = []
         names = obj[-1].keys()
         for name in names:
             path = root + name + '.obj'
@@ -117,7 +129,12 @@ def load_from_file(obj, root, M=None):
             faces.append(face)
 
         # rotate
-        if M is not None:
+        if random_rotate:
+            rotate_param = [random.randint(0, 360), random.randint(0, 360),
+                            random.randint(0, 360)]  # rotate config (x, y, z)
+            rotate.append(rotate_param)
+            M = get_rotate_matrix(rotate_param)
+
             whole_vertices = torch.mm(whole_vertices, M)
             vertices = [torch.mm(v, M) for v in vertices]
 
@@ -127,20 +144,20 @@ def load_from_file(obj, root, M=None):
         max_xyz, _ = torch.max(whole_vertices, 0)
         # max_xyzall = max_xyz.repeat((whole_vertices.shape[0], 1))
         max_len = max_xyz - min_xyz
-        len = max_len.clone()
+        len_tmp = max_len.clone()
         max_len[-1] = 0
         max_len2, _ = torch.max(max_len, 0)
-        len[0:2] = max_len2
+        len_tmp[0:2] = max_len2
         # vertices = (vertices - min_xyzall) / max_len2
         vertices_clamp = []
         for v in vertices:
             min_xyzall = min_xyz.repeat((v.shape[0], 1))
-            len_all = len.repeat((v.shape[0], 1))
+            len_all = len_tmp.repeat((v.shape[0], 1))
 
             vs = (v - min_xyzall) / len_all
             vertices_clamp.append(vs)
 
-        return vertices_clamp, faces
+        return vertices_clamp, faces, rotate
 
 
 def save_to_file(path, vertices, faces):
@@ -207,21 +224,19 @@ def rotate_matrix(matrix):
         [0, torch.cos(x), -torch.sin(x)],
         [0, torch.sin(x), torch.cos(x)]
     ])
-    if use_cuda:
-        rx = rx.cuda()
     ry = torch.Tensor([
         [torch.cos(y), 0, torch.sin(y)],
         [0, 1, 0],
         [-torch.sin(y), 0, torch.cos(y)]
     ])
-    if use_cuda:
-        ry = ry.cuda()
     rz = torch.Tensor([
         [torch.cos(z), -torch.sin(z), 0],
         [torch.sin(z), torch.cos(z), 0],
         [0, 0, 1]
     ])
-    if use_cuda:
+    if CUDA_AVAILABLE:
+        rx = rx.cuda()
+        ry = ry.cuda()
         rz = rz.cuda()
     M = torch.mm(torch.mm(rx, ry), rz)
     return M
@@ -342,26 +357,23 @@ def ball2depth(vertices, faces, h, w):
     """
     vertices = torch.clamp(vertices, 0, 1)
     vs = vertices.clone()
+    #TODO 这里的维数不对
     vs[:, 0] = vertices[:, 0] * w
     vs[:, 1] = vertices[:, 1] * h
     vertices = vs
     faces = torch.LongTensor(faces)
-    if use_cuda:
-        faces = faces.cuda()
-
     points = torch.Tensor([(i, j) for i in range(h) for j in range(w)])
-    if use_cuda:
+    if CUDA_AVAILABLE:
+        faces = faces.cuda()
         points = points.cuda()
+
     tri_points = vertices[faces, :2]
     in_triangle, w0, w1, w2 = are_in_triangles(points, tri_points)
 
     point_depth = w0 * vertices[faces[:, 0], 2] + w1 * vertices[faces[:, 1], 2] + w2 * vertices[faces[:, 2], 2]
 
-    max_val = torch.max(point_depth)
-    min_val = torch.min(point_depth)
-
-    min_depth = torch.min(torch.where(in_triangle, point_depth, torch.full_like(point_depth, 0)), dim=1).values
-    max_depth = torch.max(torch.where(in_triangle, point_depth, torch.full_like(point_depth, 0)), dim=1).values
+    min_depth = torch.min(torch.where(in_triangle, point_depth, torch.full_like(point_depth, 9999)), dim=1).values
+    max_depth = torch.max(torch.where(in_triangle, point_depth, torch.full_like(point_depth, -9999)), dim=1).values
 
     # image = torch.clamp(max_depth - min_depth, 0, 1).view(h, w)
     image = max_depth - min_depth
@@ -417,135 +429,145 @@ if __name__ == '__main__':
     depth_save_path = './depthes'  # depth save path
     patch_save_path = './patches'  # patch save path
     obj_dict = {  # .obj file name and infos
+        'switch': {
+            'category': 'knife',
+            'multi-part': False,
+            'material': 'iron',
+            'patch_size': (150, 150)
+        },
         'umbrella_001': {
             'category': 'umbrella',
             'multi-part': False,
             'material': 'plastic',
-            'patch_size': (200, 200)
-        }
+            'patch_size': (150, 150)
+        },
     }
 
     if not os.path.exists(patch_save_path):
         os.mkdir(patch_save_path)
+    if not os.path.exists(depth_save_path):
+        os.mkdir(depth_save_path)
 
-    rotate_param = [110, 38, 56]  # rotate config (x, y, z)
-    M = get_rotate_matrix(rotate_param)
+    vertices, faces, rotate_param = load_from_file(obj_dict, obj_root, True)  # load obj vertices and faces with rotation
 
-    vertices, faces = load_from_file(obj_dict, obj_root, M)  # load obj vertices and faces with rotation
+    obj_lenth = len(obj_dict.keys())
+    for i in range(obj_lenth):
+        # 循环
+        name = list(obj_dict.keys())[i]
+        obj_infos = list(obj_dict.values())[i]
+        print('------------processing: {}.obj------------'.format(name))
 
-    obj_dict_info = obj_dict
+        print('------------Part (2): Generate pacthed image.------------')
 
-    print('------------Part (2): Generate pacthed image.------------')
+        print('------------Step (1): Generate depth image.------------')
+        # we only consider object has one part
+        # 循环
+        v = vertices[i][0]
+        f = faces[i][0]
 
-    print('------------Step (1): Generate depth image.------------')
-    # we only consider object has one part 
-    v = vertices[0]
-    f = faces[0]
-    name = list(obj_dict_info.keys())[0]
-    obj_infos = list(obj_dict_info.values())[0]
+        patch_size = obj_infos['patch_size']
+        group = torch.clamp(v, 0, 1)
+        depth_clamp = ball2depth(group, f, patch_size[0], patch_size[1]).unsqueeze(0)
 
-    patch_size = obj_infos['patch_size']
-    group = torch.clamp(v, 0, 1)
-    depth_clamp = ball2depth(group, f, patch_size[0], patch_size[1]).unsqueeze(0)
+        # Enlarge the pixel to the normal image range
+        depth_img = depth_clamp[:, :] * 255
+        # print(depth_img.shape)
+        save_img(depth_save_path + '/' + name + '_depth.png', depth_img, patch_size)
 
-    # Enlarge the pixel to the normal image range
-    depth_img = depth_clamp[:,:] * 255
-    # print(depth_img.shape)
-    save_img(depth_save_path+'/' + name + '_depth.png',depth_img, patch_size)
+        print('------------------Step (2): Generate patch.------------------')
+        material = obj_infos['material']
+        patch, mask = simulate(depth_clamp.unsqueeze(0), material)
+        patch[~mask] = 1
 
-    print('------------------Step (2): Generate patch.------------------')
-    material = obj_infos['material']
-    patch, mask = simulate(depth_clamp.unsqueeze(0), material)
-    patch[~mask] = 1
+        # Enlarge the pixel to the normal image range
+        patch_img = patch.squeeze(0) * 255
+        save_img(patch_save_path + '/' + name + '_patch.png', patch_img, patch_size)
 
-    # Enlarge the pixel to the normal image range
-    patch_img = patch.squeeze(0) * 255
-    save_img(patch_save_path+'/' + name + '_patch.png',patch_img, patch_size)
+        ## Step (4): stick patch to image
+        print('------------------Step (3): Stick patch.------------------')
+        img_root = './datasets/train/images/'
+        patched_img_root = './datasets/train/images_patched/'
+        if not os.path.exists(patched_img_root):
+            os.mkdir(patched_img_root)
 
-    ## Step (4): stick patch to image
-    print('------------------Step (3): Stick patch.------------------')
-    img_root = './datasets/train/images/'
-    patched_img_root = './datasets/train/images_patched/'
+        # TODO 此处需要循环遍历
+        img_id = 'train00001'
 
-    img_id = 'train00001'
+        ## load img
+        print(img_id)
+        img_path = os.path.join(img_root, img_id + '.jpg')
+        img = cv2.imread(img_path)
+        img_tensor = torch.from_numpy(img.astype(np.float32)).permute(2, 0, 1)
+        if CUDA_AVAILABLE:
+            img_tensor = img_tensor.cuda()
 
-    if not os.path.exists(patched_img_root):
-        os.mkdir(patched_img_root)
+        img_h, img_w = img_tensor.shape[1:]
+        point = find_stick_point(patch_size[0], patch_size[1], img_h, img_w)
+        # stick patch
+        img_tensor[:, point[0]:point[0] + patch_size[0], point[1]:point[1] + patch_size[1]].mul_(patch.squeeze(0))
+        # save sticked img
+        # save_img_name = img_id.split('.')[0] + '_' + name + '.jpg'
+        new_img_path = os.path.join(patched_img_root, img_id + '.jpg')
+        save_img(new_img_path, img_tensor, img_tensor.shape[1:])
 
-    ## load img
-    print(img_id)
-    img_path = os.path.join(img_root, img_id + '.jpg')
-    img = cv2.imread(img_path)
-    img_tensor = torch.from_numpy(img.astype(np.float32)).permute(2, 0, 1)
-    if use_cuda:
-        img_tensor = img_tensor.cuda()
+        print('------------------part (3): Save new annotation.------------------')
+        ann_root = './datasets/train/annotations'
+        patched_ann_root = './datasets/train/annotations_patched/'
+        if not os.path.exists(patched_ann_root):
+            os.mkdir(patched_ann_root)
 
-    img_h, img_w = img_tensor.shape[1:]
-    point = find_stick_point(patch_size[0], patch_size[1], img_h, img_w)
-    # stick patch
-    img_tensor[:, point[0]:point[0] + patch_size[0], point[1]:point[1] + patch_size[1]].mul_(patch.squeeze(0))
-    # save sticked img
-    # save_img_name = img_id.split('.')[0] + '_' + name + '.jpg'
-    new_img_path = os.path.join(patched_img_root, img_id + '.jpg')
-    save_img(new_img_path, img_tensor, img_tensor.shape[1:])
+        ann_path = os.path.join(ann_root, img_id + '.txt')
+        anns = open(ann_path, 'r').readlines()
+        new_ann_path = os.path.join(patched_ann_root, img_id + '.txt')
+        new_anns_file = open(new_ann_path, 'w')
 
-    print('------------------part (3): Save new annotation.------------------')
-    ann_root = './datasets/train/annotations'
-    patched_ann_root = './datasets/train/annotations_patched/'
-    if not os.path.exists(patched_ann_root):
-        os.mkdir(patched_ann_root)
+        # calculate coordinates of four vertices of rotate bounding box
+        patch[~mask] = 0
+        points = cal_patch_poly(patch.squeeze(0) * 255)
 
-    ann_path = os.path.join(ann_root, img_id + '.txt')
-    anns = open(ann_path, 'r').readlines()
-    new_ann_path = os.path.join(patched_ann_root, img_id + '.txt')
-    new_anns_file = open(new_ann_path, 'w')
+        # add stick point offset
+        points[:, 0] += point[1]
+        points[:, 1] += point[0]
 
-    # calculate coordinates of four vertices of rotate bounding box
-    patch[~mask] = 0
-    points = cal_patch_poly(patch.squeeze(0) * 255)
+        # make annotation format
+        points_list = points.reshape(-1).tolist()
+        points_str = [str(i) for i in points_list]
+        category = obj_infos['category']
+        new_ann = [img_id + '.jpg', '1', category, '0 0 0 0']
+        new_ann = new_ann + points_str
+        str_new_ann = ' '.join(new_ann) + '\n'
+        anns.append(str_new_ann)
 
-    # add stick point offset
-    points[:, 0] += point[1]
-    points[:, 1] += point[0]
+        # write to file
+        for ann in anns:
+            new_anns_file.write(ann)
+        new_anns_file.close()
 
-    # make annotation format 
-    points_list = points.reshape(-1).tolist()
-    points_str = [str(i) for i in points_list]
-    category = obj_infos['category']
-    new_ann = [img_id + '.jpg', '1', category, '0 0 0 0']
-    new_ann = new_ann + points_str
-    str_new_ann = ' '.join(new_ann) + '\n'
-    anns.append(str_new_ann)
+        ## check the anno is true
+        img_save_path = './results'
+        if not os.path.exists(img_save_path):
+            os.mkdir(img_save_path)
 
-    # write to file
-    for ann in anns:
-        new_anns_file.write(ann)
-    new_anns_file.close()
+        img = cv2.imread(new_img_path)
+        image = cv2.drawContours(img, [points], 0, (0, 0, 255), 2)
+        save_img_name = img_id.split('.')[0] + '_' + name + '_rec_patch.jpg'
+        cv2.imwrite(img_save_path + '/' + save_img_name, image)
 
-    ## check the anno is true
-    img_save_path = './results'
-    if not os.path.exists(img_save_path):
-        os.mkdir(img_save_path)
+        ## Step (6): save eval annotation
+        print('------------------Part (4): Save eval annotation.------------------')
+        eval_ann_root = './datasets/train/annotations_eval/'
+        if not os.path.exists(eval_ann_root):
+            os.mkdir(eval_ann_root)
 
-    img = cv2.imread(new_img_path)
-    image = cv2.drawContours(img, [points], 0, (0, 0, 255), 2)
-    save_img_name = img_id.split('.')[0] + '_' + name + '_rec_patch.jpg'
-    cv2.imwrite(img_save_path + '/' + save_img_name, image)
+        eval_ann_path = os.path.join(eval_ann_root, img_id + '.txt')
+        eval_anns_file = open(eval_ann_path, 'w')
 
-    ## Step (6): save eval annotation
-    print('------------------Part (4): Save eval annotation.------------------')
-    eval_ann_root = './datasets/train/annotations_eval/'
-    if not os.path.exists(eval_ann_root):
-        os.mkdir(eval_ann_root)
+        eval_ann = []
+        eval_ann.append(category)
+        eval_ann.append(name)
+        # TODO 这里需要把旋转角度拿出来
+        eval_ann.extend([str(i) for i in rotate_param])
+        eval_ann.extend([str(i) for i in point])
+        eval_ann.extend([str(i) for i in patch_size])
 
-    eval_ann_path = os.path.join(eval_ann_root, img_id + '.txt')
-    eval_anns_file = open(eval_ann_path, 'w')
-
-    eval_ann = []
-    eval_ann.append(category)
-    eval_ann.append(name)
-    eval_ann.extend([str(i) for i in rotate_param])
-    eval_ann.extend([str(i) for i in point])
-    eval_ann.extend([str(i) for i in patch_size])
-
-    eval_anns_file.write(' '.join(eval_ann) + '\n')
+        eval_anns_file.write(' '.join(eval_ann) + '\n')
