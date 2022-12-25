@@ -1,0 +1,3 @@
+umbrella umbrella_002 346 113 172 135 372 120 120
+plasticbottle plasticbottle 115 226 247 186 618 150 150
+electronicequipment iphone 253 37 252 98 428 100 100

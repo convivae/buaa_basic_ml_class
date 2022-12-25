@@ -1,0 +1,3 @@
+pressure pressure_002 270 56 131 263 136 100 100
+glassbottle glassbottle 102 132 48 475 190 80 80
+metalbottle termobottle 268 134 50 378 37 150 150

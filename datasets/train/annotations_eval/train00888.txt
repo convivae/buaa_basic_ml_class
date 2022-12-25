@@ -1,0 +1,3 @@
+umbrella umbrella_001 348 208 61 137 278 120 120
+metalbottle termobottle 150 186 189 218 522 150 150
+battery battery 314 94 26 408 977 50 50

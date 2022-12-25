@@ -1,0 +1,3 @@
+pressure pressure_001 1 336 229 282 222 80 80
+battery battery 90 228 154 338 743 50 50
+battery xiaomi_powerbank 238 42 232 577 707 80 80

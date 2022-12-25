@@ -1,0 +1,3 @@
+plasticbottle plasticbottle 43 138 170 455 217 150 150
+electronicequipment ipad 210 302 119 330 610 180 180
+lighter lighter 83 47 339 549 478 50 50

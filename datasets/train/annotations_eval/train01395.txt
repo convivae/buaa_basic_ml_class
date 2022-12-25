@@ -1,0 +1,3 @@
+metalbottle termobottle 114 146 57 157 251 150 150
+battery xiaomi_powerbank 134 44 319 103 164 80 80
+electronicequipment iphone 195 355 25 68 320 100 100

@@ -1,0 +1,3 @@
+battery xiaomi_powerbank 301 212 69 242 785 80 80
+electronicequipment ipad 69 34 92 161 486 180 180
+lighter lighter 155 241 292 365 346 50 50

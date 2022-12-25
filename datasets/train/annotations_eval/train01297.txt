@@ -1,0 +1,3 @@
+pressure pressure_002 175 28 0 203 592 100 100
+metalbottle termobottle 19 124 139 38 286 150 150
+electronicequipment ipad 259 247 345 103 918 180 180

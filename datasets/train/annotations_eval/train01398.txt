@@ -1,0 +1,3 @@
+umbrella umbrella_002 52 131 307 291 597 120 120
+battery battery 79 265 313 397 873 50 50
+lighter lighter 89 218 242 453 468 50 50

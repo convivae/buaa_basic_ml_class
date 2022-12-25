@@ -1,0 +1,3 @@
+glassbottle glassbottle 283 263 71 188 15 80 80
+plasticbottle plasticbottle 191 19 225 66 29 150 150
+metalbottle termobottle 306 213 74 18 21 150 150

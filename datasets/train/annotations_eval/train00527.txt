@@ -1,0 +1,3 @@
+umbrella umbrella_001 280 177 193 58 487 120 120
+glassbottle glassbottle 63 102 176 39 144 80 80
+electronicequipment ipad 53 208 87 501 272 180 180

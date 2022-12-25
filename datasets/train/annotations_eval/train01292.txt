@@ -1,0 +1,3 @@
+glassbottle glassbottle 276 235 351 244 68 80 80
+battery battery 249 28 167 144 282 50 50
+electronicequipment iphone 68 78 145 233 484 100 100

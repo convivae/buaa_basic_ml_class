@@ -1,0 +1,3 @@
+pressure pressure_001 188 36 328 11 487 80 80
+glassbottle glassbottle 287 306 90 351 128 80 80
+electronicequipment iphone 155 129 249 196 515 100 100

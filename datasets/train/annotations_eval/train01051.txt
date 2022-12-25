@@ -1,0 +1,3 @@
+pressure pressure_001 113 249 348 462 560 80 80
+glassbottle glassbottle 241 109 347 43 57 80 80
+lighter lighter 196 251 90 96 542 50 50

@@ -1,0 +1,3 @@
+umbrella umbrella_001 237 74 183 85 226 120 120
+umbrella umbrella_002 326 48 336 331 45 120 120
+battery xiaomi_powerbank 240 175 157 343 571 80 80

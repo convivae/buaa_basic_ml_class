@@ -1,0 +1,3 @@
+umbrella umbrella_001 325 192 354 397 87 120 120
+battery xiaomi_powerbank 68 198 356 232 717 80 80
+lighter lighter 64 177 233 233 778 50 50

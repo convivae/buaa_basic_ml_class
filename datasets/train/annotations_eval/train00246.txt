@@ -1,0 +1,3 @@
+umbrella umbrella_001 72 57 138 55 326 120 120
+glassbottle glassbottle 138 119 230 466 40 80 80
+lighter lighter 153 295 358 468 520 50 50

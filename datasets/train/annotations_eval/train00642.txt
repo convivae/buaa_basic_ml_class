@@ -1,0 +1,3 @@
+umbrella umbrella_001 235 292 219 500 338 120 120
+umbrella umbrella_002 310 7 335 114 420 120 120
+electronicequipment ipad 17 200 198 197 602 180 180

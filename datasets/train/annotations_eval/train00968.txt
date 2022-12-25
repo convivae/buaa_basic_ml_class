@@ -1,0 +1,3 @@
+umbrella umbrella_002 213 230 162 422 601 120 120
+electronicequipment ipad 4 61 16 129 472 180 180
+lighter lighter 277 19 303 50 355 50 50

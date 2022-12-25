@@ -1,0 +1,3 @@
+glassbottle glassbottle 201 104 283 314 72 80 80
+metalbottle termobottle 307 277 242 289 349 150 150
+lighter lighter 300 168 152 432 524 50 50

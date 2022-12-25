@@ -1,0 +1,3 @@
+plasticbottle plasticbottle 37 133 151 164 288 150 150
+battery xiaomi_powerbank 142 86 349 15 259 80 80
+electronicequipment iphone 217 228 311 292 514 100 100

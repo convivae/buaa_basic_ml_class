@@ -1,0 +1,3 @@
+pressure pressure_001 232 293 253 42 515 80 80
+plasticbottle plasticbottle 265 87 106 117 430 150 150
+battery battery 32 38 153 277 371 50 50

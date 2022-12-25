@@ -1,0 +1,3 @@
+umbrella umbrella_001 102 10 182 359 83 120 120
+battery battery 78 324 333 95 28 50 50
+electronicequipment ipad 247 144 32 225 305 180 180

@@ -1,0 +1,3 @@
+battery battery 190 278 283 94 144 50 50
+electronicequipment ipad 68 293 29 387 414 180 180
+lighter lighter 268 140 35 431 610 50 50

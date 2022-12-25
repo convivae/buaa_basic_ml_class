@@ -1,0 +1,3 @@
+battery battery 74 304 343 44 167 50 50
+battery xiaomi_powerbank 211 322 120 261 407 80 80
+electronicequipment iphone 2 110 127 22 44 100 100

@@ -1,0 +1,3 @@
+pressure pressure_001 35 264 311 184 224 80 80
+pressure pressure_002 92 44 266 213 328 100 100
+glassbottle glassbottle 17 348 275 345 206 80 80

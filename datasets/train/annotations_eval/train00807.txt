@@ -1,0 +1,3 @@
+pressure pressure_001 84 303 160 93 230 80 80
+metalbottle termobottle 94 253 146 134 360 150 150
+battery xiaomi_powerbank 291 45 294 337 408 80 80

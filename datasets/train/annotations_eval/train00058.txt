@@ -1,0 +1,3 @@
+glassbottle glassbottle 146 337 212 567 375 80 80
+metalbottle termobottle 134 79 11 152 390 150 150
+battery xiaomi_powerbank 176 134 161 511 889 80 80

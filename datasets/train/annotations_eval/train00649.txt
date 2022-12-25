@@ -1,0 +1,3 @@
+pressure pressure_001 280 349 146 161 170 80 80
+battery battery 339 254 114 26 267 50 50
+lighter lighter 97 97 84 269 519 50 50

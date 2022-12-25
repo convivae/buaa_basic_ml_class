@@ -1,0 +1,3 @@
+pressure pressure_002 45 31 183 340 283 100 100
+glassbottle glassbottle 308 357 79 88 307 80 80
+electronicequipment ipad 107 246 345 286 138 180 180

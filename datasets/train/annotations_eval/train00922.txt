@@ -1,0 +1,3 @@
+metalbottle termobottle 56 42 350 498 802 150 150
+battery battery 265 2 80 250 1056 50 50
+battery xiaomi_powerbank 115 322 194 288 642 80 80

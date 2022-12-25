@@ -1,0 +1,3 @@
+plasticbottle plasticbottle 319 60 344 113 18 150 150
+battery xiaomi_powerbank 130 90 152 199 43 80 80
+lighter lighter 94 156 350 54 214 50 50

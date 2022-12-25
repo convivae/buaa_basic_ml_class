@@ -1,0 +1,3 @@
+metalbottle termobottle 207 36 99 200 654 150 150
+battery xiaomi_powerbank 56 301 33 346 792 80 80
+lighter lighter 256 289 117 492 992 50 50

@@ -1,0 +1,3 @@
+umbrella umbrella_001 264 326 68 42 559 120 120
+glassbottle glassbottle 182 147 221 336 62 80 80
+metalbottle termobottle 262 139 19 33 310 150 150

@@ -1,0 +1,3 @@
+pressure pressure_001 305 91 174 350 412 80 80
+pressure pressure_002 141 284 273 123 497 100 100
+electronicequipment ipad 72 171 287 99 187 180 180

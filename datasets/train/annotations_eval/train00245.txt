@@ -1,0 +1,3 @@
+umbrella umbrella_001 344 3 279 189 570 120 120
+pressure pressure_001 46 62 40 155 729 80 80
+electronicequipment iphone 184 41 284 364 43 100 100

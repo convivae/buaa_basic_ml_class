@@ -1,0 +1,3 @@
+umbrella umbrella_001 214 332 246 146 461 120 120
+glassbottle glassbottle 155 26 143 120 754 80 80
+battery xiaomi_powerbank 132 220 71 74 551 80 80

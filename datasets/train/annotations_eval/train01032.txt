@@ -1,0 +1,3 @@
+glassbottle glassbottle 95 293 2 453 197 80 80
+metalbottle termobottle 37 207 143 310 711 150 150
+electronicequipment iphone 30 338 312 571 452 100 100

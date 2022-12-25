@@ -1,0 +1,3 @@
+pressure pressure_002 108 86 123 366 441 100 100
+electronicequipment iphone 266 8 305 157 50 100 100
+electronicequipment ipad 341 3 9 172 369 180 180

@@ -1,0 +1,3 @@
+battery battery 197 312 103 361 1078 50 50
+electronicequipment iphone 313 138 322 344 807 100 100
+electronicequipment ipad 327 113 240 262 381 180 180

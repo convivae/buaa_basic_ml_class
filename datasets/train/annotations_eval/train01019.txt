@@ -1,0 +1,3 @@
+umbrella umbrella_002 90 89 320 138 866 120 120
+plasticbottle plasticbottle 324 4 71 153 716 150 150
+battery battery 114 195 81 620 826 50 50

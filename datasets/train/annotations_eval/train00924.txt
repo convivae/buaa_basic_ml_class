@@ -1,0 +1,3 @@
+umbrella umbrella_001 323 179 334 227 424 120 120
+pressure pressure_002 19 129 261 225 71 100 100
+metalbottle termobottle 186 79 136 225 15 150 150

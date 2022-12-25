@@ -1,0 +1,3 @@
+umbrella umbrella_001 249 291 318 142 234 120 120
+metalbottle termobottle 186 77 331 176 131 150 150
+electronicequipment ipad 65 94 242 46 188 180 180

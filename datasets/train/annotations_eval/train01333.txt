@@ -1,0 +1,3 @@
+metalbottle termobottle 308 116 3 421 269 150 150
+electronicequipment ipad 76 203 90 41 175 180 180
+lighter lighter 179 217 126 372 155 50 50

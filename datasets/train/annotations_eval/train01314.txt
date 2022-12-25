@@ -1,0 +1,3 @@
+battery battery 311 23 337 225 586 50 50
+battery xiaomi_powerbank 113 18 138 309 977 80 80
+electronicequipment ipad 283 89 81 343 657 180 180

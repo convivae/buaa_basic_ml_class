@@ -1,0 +1,3 @@
+pressure pressure_001 23 328 37 217 983 80 80
+electronicequipment ipad 7 58 171 199 200 180 180
+lighter lighter 354 165 201 44 1004 50 50

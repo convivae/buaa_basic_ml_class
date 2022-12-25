@@ -1,0 +1,3 @@
+pressure pressure_002 71 76 179 501 494 100 100
+glassbottle glassbottle 350 286 150 609 558 80 80
+plasticbottle plasticbottle 76 99 117 264 559 150 150

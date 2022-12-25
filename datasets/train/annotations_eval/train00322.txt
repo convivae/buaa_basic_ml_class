@@ -1,0 +1,3 @@
+pressure pressure_001 217 37 118 460 464 80 80
+metalbottle termobottle 338 161 359 131 300 150 150
+lighter lighter 144 17 157 535 652 50 50

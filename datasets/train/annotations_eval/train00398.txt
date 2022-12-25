@@ -1,0 +1,3 @@
+umbrella umbrella_001 159 150 352 213 704 120 120
+plasticbottle plasticbottle 314 257 331 109 625 150 150
+lighter lighter 59 294 251 259 215 50 50

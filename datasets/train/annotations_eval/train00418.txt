@@ -1,0 +1,3 @@
+pressure pressure_002 358 83 137 481 554 100 100
+battery xiaomi_powerbank 208 42 198 25 220 80 80
+electronicequipment iphone 212 53 187 33 604 100 100

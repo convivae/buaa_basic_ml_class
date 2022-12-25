@@ -1,0 +1,3 @@
+battery battery 349 29 192 207 285 50 50
+electronicequipment iphone 75 65 46 433 183 100 100
+lighter lighter 73 301 204 115 297 50 50

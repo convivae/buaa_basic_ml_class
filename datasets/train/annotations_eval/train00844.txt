@@ -1,0 +1,3 @@
+plasticbottle plasticbottle 79 166 108 107 26 150 150
+electronicequipment iphone 18 246 99 438 380 100 100
+electronicequipment ipad 28 314 297 427 487 180 180

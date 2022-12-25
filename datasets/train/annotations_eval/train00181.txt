@@ -1,0 +1,3 @@
+glassbottle glassbottle 78 307 46 369 170 80 80
+battery xiaomi_powerbank 252 336 350 19 412 80 80
+electronicequipment iphone 280 18 279 245 455 100 100

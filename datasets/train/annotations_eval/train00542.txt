@@ -1,0 +1,3 @@
+glassbottle glassbottle 255 274 311 477 534 80 80
+battery battery 211 355 29 430 466 50 50
+battery xiaomi_powerbank 223 283 163 100 145 80 80

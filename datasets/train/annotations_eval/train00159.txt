@@ -1,0 +1,3 @@
+pressure pressure_001 194 275 205 18 163 80 80
+pressure pressure_002 82 330 219 416 398 100 100
+lighter lighter 169 63 118 295 319 50 50

@@ -1,0 +1,3 @@
+metalbottle termobottle 60 78 172 238 81 150 150
+battery battery 112 214 175 412 432 50 50
+lighter lighter 112 190 105 244 446 50 50

@@ -1,0 +1,3 @@
+battery battery 5 258 301 294 794 50 50
+battery xiaomi_powerbank 172 233 46 430 422 80 80
+lighter lighter 180 196 47 354 533 50 50

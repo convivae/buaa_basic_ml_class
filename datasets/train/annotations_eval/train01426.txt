@@ -1,0 +1,3 @@
+umbrella umbrella_001 252 219 42 10 193 120 120
+battery xiaomi_powerbank 154 183 319 177 336 80 80
+electronicequipment ipad 8 255 84 22 315 180 180

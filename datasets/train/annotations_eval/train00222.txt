@@ -1,0 +1,3 @@
+pressure pressure_001 12 188 273 511 552 80 80
+glassbottle glassbottle 8 281 244 279 397 80 80
+battery battery 42 326 281 194 616 50 50

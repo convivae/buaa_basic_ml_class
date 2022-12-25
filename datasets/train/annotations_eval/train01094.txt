@@ -1,0 +1,3 @@
+umbrella umbrella_002 351 287 34 387 671 120 120
+pressure pressure_002 309 154 76 60 356 100 100
+lighter lighter 272 28 140 597 424 50 50

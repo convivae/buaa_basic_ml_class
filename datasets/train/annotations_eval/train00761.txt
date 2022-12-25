@@ -1,0 +1,3 @@
+pressure pressure_001 238 106 171 132 158 80 80
+electronicequipment iphone 124 121 10 350 753 100 100
+lighter lighter 287 231 133 329 898 50 50

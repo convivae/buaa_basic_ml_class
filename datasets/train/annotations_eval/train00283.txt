@@ -1,0 +1,3 @@
+metalbottle termobottle 8 246 282 26 259 150 150
+electronicequipment iphone 339 297 348 105 160 100 100
+lighter lighter 202 5 174 15 161 50 50

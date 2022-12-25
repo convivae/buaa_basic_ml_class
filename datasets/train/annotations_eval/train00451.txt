@@ -1,0 +1,3 @@
+battery xiaomi_powerbank 339 57 118 249 1074 80 80
+electronicequipment iphone 320 125 152 259 650 100 100
+lighter lighter 290 124 327 100 250 50 50

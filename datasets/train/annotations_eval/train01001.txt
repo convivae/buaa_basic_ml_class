@@ -1,0 +1,3 @@
+pressure pressure_001 319 19 139 247 118 80 80
+battery battery 261 46 62 335 354 50 50
+electronicequipment ipad 164 85 115 123 301 180 180

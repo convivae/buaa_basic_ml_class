@@ -1,0 +1,3 @@
+plasticbottle plasticbottle 259 93 20 234 682 150 150
+metalbottle termobottle 61 184 200 18 780 150 150
+lighter lighter 10 293 12 101 40 50 50

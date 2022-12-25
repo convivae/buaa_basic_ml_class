@@ -1,0 +1,3 @@
+glassbottle glassbottle 229 64 185 245 297 80 80
+electronicequipment ipad 269 342 119 219 524 180 180
+lighter lighter 336 160 155 339 556 50 50

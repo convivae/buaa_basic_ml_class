@@ -1,0 +1,3 @@
+umbrella umbrella_002 133 284 213 96 196 120 120
+pressure pressure_002 240 280 100 54 284 100 100
+battery battery 144 147 146 210 518 50 50

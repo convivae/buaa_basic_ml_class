@@ -1,0 +1,3 @@
+pressure pressure_002 129 223 122 152 307 100 100
+metalbottle termobottle 52 76 175 301 132 150 150
+battery battery 31 186 214 88 204 50 50

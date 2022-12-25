@@ -1,0 +1,3 @@
+umbrella umbrella_001 283 19 131 160 45 120 120
+electronicequipment iphone 288 31 78 108 206 100 100
+electronicequipment ipad 238 339 140 379 171 180 180

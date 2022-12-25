@@ -1,0 +1,3 @@
+umbrella umbrella_002 75 10 284 403 532 120 120
+glassbottle glassbottle 271 185 2 125 634 80 80
+plasticbottle plasticbottle 55 222 302 59 55 150 150

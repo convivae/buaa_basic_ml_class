@@ -1,0 +1,3 @@
+pressure pressure_001 249 138 211 317 720 80 80
+plasticbottle plasticbottle 125 294 54 270 118 150 150
+electronicequipment ipad 45 19 258 260 89 180 180

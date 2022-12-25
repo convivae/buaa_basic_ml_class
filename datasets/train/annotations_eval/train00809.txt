@@ -1,0 +1,3 @@
+plasticbottle plasticbottle 124 309 336 345 330 150 150
+metalbottle termobottle 181 14 180 498 264 150 150
+electronicequipment ipad 201 314 258 258 58 180 180

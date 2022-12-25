@@ -1,0 +1,3 @@
+umbrella umbrella_001 75 16 308 260 252 120 120
+umbrella umbrella_002 305 5 16 63 602 120 120
+battery battery 33 183 203 465 43 50 50

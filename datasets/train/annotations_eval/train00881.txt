@@ -1,0 +1,3 @@
+umbrella umbrella_001 14 216 309 174 548 120 120
+pressure pressure_002 35 319 115 16 484 100 100
+plasticbottle plasticbottle 339 190 196 219 676 150 150

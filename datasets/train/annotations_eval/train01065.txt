@@ -1,0 +1,3 @@
+plasticbottle plasticbottle 130 224 226 461 615 150 150
+electronicequipment iphone 132 9 88 252 182 100 100
+lighter lighter 345 264 131 569 145 50 50

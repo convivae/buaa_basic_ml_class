@@ -1,0 +1,3 @@
+pressure pressure_001 250 46 353 350 349 80 80
+plasticbottle plasticbottle 153 16 64 61 449 150 150
+lighter lighter 96 219 264 107 547 50 50

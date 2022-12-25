@@ -1,0 +1,3 @@
+umbrella umbrella_002 134 2 260 349 90 120 120
+plasticbottle plasticbottle 252 333 204 330 380 150 150
+electronicequipment ipad 43 162 245 502 355 180 180

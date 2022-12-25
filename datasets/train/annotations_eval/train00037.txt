@@ -1,0 +1,3 @@
+pressure pressure_001 284 25 189 116 175 80 80
+pressure pressure_002 75 135 340 323 428 100 100
+electronicequipment iphone 125 187 164 136 470 100 100

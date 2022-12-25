@@ -1,0 +1,3 @@
+plasticbottle plasticbottle 290 179 333 282 501 150 150
+battery battery 171 301 188 379 460 50 50
+lighter lighter 55 63 150 49 496 50 50

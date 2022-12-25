@@ -1,0 +1,3 @@
+pressure pressure_002 61 193 12 450 548 100 100
+metalbottle termobottle 357 157 180 108 310 150 150
+electronicequipment iphone 353 76 63 233 874 100 100

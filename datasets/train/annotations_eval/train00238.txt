@@ -1,0 +1,3 @@
+umbrella umbrella_001 24 337 16 92 405 120 120
+umbrella umbrella_002 66 275 280 205 937 120 120
+lighter lighter 65 50 319 471 195 50 50

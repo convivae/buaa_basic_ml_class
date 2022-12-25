@@ -1,0 +1,3 @@
+glassbottle glassbottle 69 20 182 174 47 80 80
+metalbottle termobottle 219 224 349 434 762 150 150
+battery battery 170 156 174 70 920 50 50

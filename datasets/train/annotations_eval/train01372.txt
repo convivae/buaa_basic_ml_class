@@ -1,0 +1,3 @@
+glassbottle glassbottle 104 246 38 428 773 80 80
+battery xiaomi_powerbank 292 360 51 242 609 80 80
+lighter lighter 135 71 349 215 424 50 50

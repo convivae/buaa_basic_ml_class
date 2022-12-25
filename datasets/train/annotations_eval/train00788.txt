@@ -1,0 +1,3 @@
+electronicequipment iphone 169 184 286 490 708 100 100
+electronicequipment ipad 51 159 84 290 367 180 180
+lighter lighter 191 174 178 300 478 50 50

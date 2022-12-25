@@ -1,0 +1,3 @@
+glassbottle glassbottle 248 121 342 140 192 80 80
+electronicequipment iphone 127 319 146 31 221 100 100
+electronicequipment ipad 205 145 160 106 243 180 180

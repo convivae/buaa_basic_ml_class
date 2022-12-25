@@ -1,0 +1,3 @@
+umbrella umbrella_001 119 42 85 187 338 120 120
+metalbottle termobottle 271 151 315 219 15 150 150
+lighter lighter 75 304 150 78 484 50 50

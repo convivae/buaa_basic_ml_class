@@ -1,0 +1,3 @@
+plasticbottle plasticbottle 188 212 326 218 187 150 150
+metalbottle termobottle 53 92 59 40 45 150 150
+battery battery 115 27 188 110 476 50 50

@@ -1,0 +1,3 @@
+pressure pressure_001 199 31 316 30 113 80 80
+pressure pressure_002 106 212 103 512 192 100 100
+metalbottle termobottle 68 163 44 10 576 150 150

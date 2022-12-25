@@ -1,0 +1,3 @@
+glassbottle glassbottle 47 37 304 172 33 80 80
+plasticbottle plasticbottle 291 61 18 14 147 150 150
+electronicequipment iphone 326 143 176 483 44 100 100

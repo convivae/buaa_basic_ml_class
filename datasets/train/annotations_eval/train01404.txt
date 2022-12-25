@@ -1,0 +1,3 @@
+pressure pressure_002 347 158 333 270 399 100 100
+battery xiaomi_powerbank 21 10 11 190 322 80 80
+lighter lighter 247 36 252 238 394 50 50

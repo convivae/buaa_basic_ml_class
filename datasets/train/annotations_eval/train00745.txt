@@ -1,0 +1,3 @@
+pressure pressure_001 277 350 137 459 48 80 80
+pressure pressure_002 74 299 300 555 437 100 100
+battery battery 231 62 299 265 519 50 50

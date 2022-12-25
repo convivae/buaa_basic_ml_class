@@ -1,0 +1,3 @@
+pressure pressure_001 58 215 302 63 298 80 80
+plasticbottle plasticbottle 176 176 159 84 972 150 150
+electronicequipment iphone 69 236 95 414 261 100 100

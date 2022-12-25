@@ -1,0 +1,3 @@
+umbrella umbrella_002 341 218 36 72 161 120 120
+glassbottle glassbottle 122 229 84 153 472 80 80
+battery battery 184 122 65 445 468 50 50

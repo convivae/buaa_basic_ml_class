@@ -1,0 +1,3 @@
+umbrella umbrella_002 325 313 213 240 614 120 120
+battery battery 2 344 134 563 322 50 50
+electronicequipment iphone 281 34 343 569 37 100 100

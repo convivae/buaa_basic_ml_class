@@ -1,0 +1,3 @@
+pressure pressure_002 359 234 236 208 181 100 100
+glassbottle glassbottle 272 18 70 151 230 80 80
+battery xiaomi_powerbank 138 272 359 118 972 80 80

@@ -1,0 +1,3 @@
+metalbottle termobottle 355 197 348 420 213 150 150
+battery battery 330 89 208 509 846 50 50
+electronicequipment iphone 268 268 37 177 832 100 100

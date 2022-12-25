@@ -1,0 +1,3 @@
+glassbottle glassbottle 101 119 301 459 545 80 80
+battery battery 4 27 104 350 581 50 50
+lighter lighter 127 234 118 412 304 50 50

@@ -1,0 +1,3 @@
+glassbottle glassbottle 61 124 300 397 878 80 80
+metalbottle termobottle 318 296 321 457 158 150 150
+electronicequipment ipad 244 121 164 248 127 180 180

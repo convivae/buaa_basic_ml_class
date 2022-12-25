@@ -1,0 +1,3 @@
+umbrella umbrella_002 21 358 31 304 98 120 120
+pressure pressure_002 216 327 89 134 327 100 100
+battery xiaomi_powerbank 348 16 264 242 193 80 80

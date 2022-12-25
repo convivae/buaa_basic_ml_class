@@ -1,0 +1,3 @@
+umbrella umbrella_001 46 313 310 165 92 120 120
+pressure pressure_001 283 299 289 93 29 80 80
+glassbottle glassbottle 303 151 61 148 134 80 80

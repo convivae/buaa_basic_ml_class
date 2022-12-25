@@ -1,0 +1,3 @@
+umbrella umbrella_002 143 212 259 285 230 120 120
+battery battery 259 38 252 280 127 50 50
+lighter lighter 36 284 21 108 381 50 50

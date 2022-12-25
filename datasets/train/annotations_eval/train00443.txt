@@ -1,0 +1,3 @@
+umbrella umbrella_002 351 153 112 234 51 120 120
+electronicequipment iphone 22 208 229 106 379 100 100
+lighter lighter 308 61 109 523 776 50 50

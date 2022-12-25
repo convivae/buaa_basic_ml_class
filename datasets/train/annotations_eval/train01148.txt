@@ -1,0 +1,3 @@
+umbrella umbrella_001 293 179 209 245 192 120 120
+umbrella umbrella_002 187 360 37 32 468 120 120
+pressure pressure_001 216 72 272 311 524 80 80

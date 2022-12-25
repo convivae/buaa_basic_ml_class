@@ -1,0 +1,3 @@
+umbrella umbrella_001 18 26 180 280 464 120 120
+pressure pressure_002 309 59 243 416 401 100 100
+electronicequipment ipad 167 76 325 499 541 180 180

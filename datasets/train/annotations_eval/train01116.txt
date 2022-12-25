@@ -1,0 +1,3 @@
+pressure pressure_002 57 347 291 113 608 100 100
+battery battery 270 209 196 452 390 50 50
+electronicequipment iphone 16 59 317 242 138 100 100

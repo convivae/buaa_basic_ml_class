@@ -1,0 +1,3 @@
+metalbottle termobottle 144 127 55 337 539 150 150
+battery battery 29 138 313 409 601 50 50
+electronicequipment ipad 266 75 54 237 356 180 180

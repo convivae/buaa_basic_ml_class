@@ -1,0 +1,3 @@
+plasticbottle plasticbottle 140 333 7 124 273 150 150
+battery battery 260 91 316 38 35 50 50
+electronicequipment iphone 162 283 260 498 501 100 100

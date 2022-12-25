@@ -1,0 +1,3 @@
+glassbottle glassbottle 2 270 172 359 574 80 80
+battery battery 270 9 88 191 365 50 50
+electronicequipment ipad 192 209 54 275 452 180 180
