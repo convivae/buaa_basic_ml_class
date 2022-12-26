@@ -473,8 +473,8 @@ if __name__ == '__main__':
             'material': 'glass',
             'patch_size': (80, 80)
         },
-        'plasticbottle': {
-            'category': 'plasticbottle',
+        'OCbottle': {
+            'category': 'OCbottle',
             'multi-part': False,
             'material': 'plastic',
             'patch_size': (150, 150)

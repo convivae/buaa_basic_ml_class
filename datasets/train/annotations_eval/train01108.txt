@@ -1,3 +1,3 @@
 pressure pressure_002 299 106 102 154 118 100 100
-plasticbottle plasticbottle 331 356 6 78 299 150 150
+OCbottle OCbottle 331 356 6 78 299 150 150
 electronicequipment iphone 271 150 25 120 366 100 100

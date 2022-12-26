@@ -1,3 +1,3 @@
 glassbottle glassbottle 131 299 233 285 187 80 80
-plasticbottle plasticbottle 120 316 109 324 666 150 150
+OCbottle OCbottle 120 316 109 324 666 150 150
 battery xiaomi_powerbank 93 258 26 17 887 80 80

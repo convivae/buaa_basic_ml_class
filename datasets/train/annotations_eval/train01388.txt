@@ -1,3 +1,3 @@
 glassbottle glassbottle 6 91 192 231 62 80 80
-plasticbottle plasticbottle 235 58 120 233 403 150 150
+OCbottle OCbottle 235 58 120 233 403 150 150
 battery battery 299 36 313 293 384 50 50

@@ -1,3 +1,3 @@
 umbrella umbrella_001 135 90 7 558 203 120 120
-plasticbottle plasticbottle 111 0 178 220 158 150 150
+OCbottle OCbottle 111 0 178 220 158 150 150
 electronicequipment iphone 359 79 111 164 50 100 100

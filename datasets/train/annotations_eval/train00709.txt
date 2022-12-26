@@ -1,3 +1,3 @@
-plasticbottle plasticbottle 264 49 46 251 451 150 150
+OCbottle OCbottle 264 49 46 251 451 150 150
 battery battery 52 124 305 440 617 50 50
 lighter lighter 23 254 229 226 477 50 50

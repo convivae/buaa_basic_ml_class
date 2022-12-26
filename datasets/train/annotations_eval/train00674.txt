@@ -1,3 +1,3 @@
 pressure pressure_001 260 47 203 69 268 80 80
 glassbottle glassbottle 247 50 308 514 133 80 80
-plasticbottle plasticbottle 250 347 184 285 434 150 150
+OCbottle OCbottle 250 347 184 285 434 150 150

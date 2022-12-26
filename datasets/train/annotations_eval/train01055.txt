@@ -1,3 +1,3 @@
-plasticbottle plasticbottle 72 177 223 414 299 150 150
+OCbottle OCbottle 72 177 223 414 299 150 150
 metalbottle termobottle 165 227 12 175 784 150 150
 electronicequipment ipad 202 288 145 193 432 180 180

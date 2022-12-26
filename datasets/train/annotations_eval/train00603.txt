@@ -1,3 +1,3 @@
 pressure pressure_002 251 6 63 73 332 100 100
-plasticbottle plasticbottle 356 224 280 138 41 150 150
+OCbottle OCbottle 356 224 280 138 41 150 150
 battery xiaomi_powerbank 232 347 172 118 211 80 80

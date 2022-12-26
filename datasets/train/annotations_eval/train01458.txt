@@ -1,3 +1,3 @@
 umbrella umbrella_002 153 304 43 66 222 120 120
-plasticbottle plasticbottle 73 272 308 100 545 150 150
+OCbottle OCbottle 73 272 308 100 545 150 150
 lighter lighter 302 219 280 445 260 50 50

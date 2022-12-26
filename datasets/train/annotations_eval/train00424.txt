@@ -1,3 +1,3 @@
 umbrella umbrella_001 170 10 142 238 263 120 120
 glassbottle glassbottle 160 273 349 109 801 80 80
-plasticbottle plasticbottle 165 172 40 340 645 150 150
+OCbottle OCbottle 165 172 40 340 645 150 150

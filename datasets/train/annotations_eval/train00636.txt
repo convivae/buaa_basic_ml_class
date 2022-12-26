@@ -1,3 +1,3 @@
-plasticbottle plasticbottle 70 31 253 220 604 150 150
+OCbottle OCbottle 70 31 253 220 604 150 150
 battery xiaomi_powerbank 314 70 144 579 835 80 80
 electronicequipment ipad 210 159 283 288 64 180 180

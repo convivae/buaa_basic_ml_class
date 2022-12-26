@@ -1,3 +1,3 @@
 glassbottle glassbottle 27 209 66 545 988 80 80
-plasticbottle plasticbottle 160 272 338 509 675 150 150
+OCbottle OCbottle 160 272 338 509 675 150 150
 electronicequipment ipad 328 67 350 324 379 180 180

@@ -1,3 +1,3 @@
 umbrella umbrella_002 142 242 114 191 181 120 120
-plasticbottle plasticbottle 155 328 223 236 413 150 150
+OCbottle OCbottle 155 328 223 236 413 150 150
 battery battery 212 276 338 438 1031 50 50

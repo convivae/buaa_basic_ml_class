@@ -1,3 +1,3 @@
 pressure pressure_002 88 169 319 34 243 100 100
-plasticbottle plasticbottle 76 184 327 167 51 150 150
+OCbottle OCbottle 76 184 327 167 51 150 150
 battery battery 318 142 63 245 151 50 50

@@ -1,3 +1,3 @@
 pressure pressure_001 45 5 308 79 970 80 80
-plasticbottle plasticbottle 237 183 315 517 762 150 150
+OCbottle OCbottle 237 183 315 517 762 150 150
 metalbottle termobottle 149 51 160 259 876 150 150

@@ -1,3 +1,3 @@
 glassbottle glassbottle 358 333 103 177 572 80 80
-plasticbottle plasticbottle 61 156 41 67 48 150 150
+OCbottle OCbottle 61 156 41 67 48 150 150
 lighter lighter 61 264 286 104 38 50 50

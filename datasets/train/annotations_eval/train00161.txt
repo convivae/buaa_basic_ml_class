@@ -1,3 +1,3 @@
-plasticbottle plasticbottle 269 82 58 325 585 150 150
+OCbottle OCbottle 269 82 58 325 585 150 150
 metalbottle termobottle 42 325 246 166 471 150 150
 battery battery 258 252 148 130 309 50 50

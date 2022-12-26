@@ -1,3 +1,3 @@
 pressure pressure_001 204 241 123 607 518 80 80
-plasticbottle plasticbottle 360 49 157 278 63 150 150
+OCbottle OCbottle 360 49 157 278 63 150 150
 lighter lighter 19 185 197 325 538 50 50

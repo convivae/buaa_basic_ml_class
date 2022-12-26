@@ -1,3 +1,3 @@
-plasticbottle plasticbottle 340 129 200 171 279 150 150
+OCbottle OCbottle 340 129 200 171 279 150 150
 metalbottle termobottle 234 98 313 328 112 150 150
 lighter lighter 124 176 121 152 202 50 50

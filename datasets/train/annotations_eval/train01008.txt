@@ -1,3 +1,3 @@
 umbrella umbrella_001 143 309 37 446 345 120 120
-plasticbottle plasticbottle 323 99 278 137 330 150 150
+OCbottle OCbottle 323 99 278 137 330 150 150
 metalbottle termobottle 23 212 100 240 471 150 150

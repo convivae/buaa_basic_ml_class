@@ -1,3 +1,3 @@
-plasticbottle plasticbottle 81 331 16 12 125 150 150
+OCbottle OCbottle 81 331 16 12 125 150 150
 electronicequipment ipad 73 187 206 161 215 180 180
 lighter lighter 52 55 338 405 395 50 50

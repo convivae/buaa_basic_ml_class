@@ -1,3 +1,3 @@
-plasticbottle plasticbottle 270 247 235 309 719 150 150
+OCbottle OCbottle 270 247 235 309 719 150 150
 electronicequipment iphone 331 297 303 17 35 100 100
 electronicequipment ipad 221 245 77 26 495 180 180

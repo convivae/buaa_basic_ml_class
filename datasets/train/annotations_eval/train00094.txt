@@ -1,3 +1,3 @@
 umbrella umbrella_002 235 299 336 457 499 120 120
 pressure pressure_001 192 320 121 237 754 80 80
-plasticbottle plasticbottle 281 323 7 208 339 150 150
+OCbottle OCbottle 281 323 7 208 339 150 150
